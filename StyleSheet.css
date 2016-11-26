@@ -1,0 +1,46 @@
+﻿body {
+background-color: grey;
+color: lawngreen;
+width: 1000px;
+float: left;
+margin-right: 0px;
+}
+
+li{
+    background-color: grey;
+    color: purple;
+}
+
+fieldset{
+    background-color: grey;
+    color: red;
+    Border: 1px solid rgb(233,69,0);
+    float: left;
+    margin: 10px 0px 10px 2.5%;
+    width: 46%
+}
+head, footer {
+    background-color: grey;
+    color: lawngreen;
+margin: 0px auto;
+}
+h1 {
+    text-align: center;
+    background-color: grey;
+    color: lawngreen;
+}
+
+h2 {
+    text-align: center;
+    background-color: grey;
+    color: purple;
+}
+p1 {
+    color: purple;
+
+}
+
+navigate {
+text-align: center;
+background-color: grey;
+}
