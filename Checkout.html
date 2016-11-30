@@ -28,9 +28,29 @@
         <option value="Wood">Wood</option>
         <option value="Metal">Metal</option>
 
+        </select>
+
+     <select name="Types">
+
+            <option value="IVSided">4 Sided</option>
+            <option value="VISided">6 Sided</option>
+            <option value="XXSided">20 Sided</option>
+
+        </select>
+
+    <select name="Brands">
+
+        <option value="DiceCo">DiceCo</option>
+        <option value="AlexInd">Alex Industries</option>
+        <option value="MikayCo">MikayCo</option>
+
     </select>
 
+    <display>
 
+        You will pay: 
+
+    </display>
 
 
     <script>
@@ -38,9 +58,9 @@
         function selectMaterial()
         {
             var MaterialPrice = "Materials";
-            var Plastic = 2;
-            var Wood = 5;
-            var Metal = 10;
+            var Plastic = 1;
+            var Wood = 3.50;
+            var Metal = 5;
             document.getElementById("Materials").classList.toggle("show");
             
 
@@ -49,7 +69,11 @@
 
         function selectType()
         {
-
+            var TypePrice = "Types";
+            var IVSided = 2;
+            var VISided = 5;
+            var XXSided = 10;
+            document.getElementById("Types").classList.toggle("show");
 
 
 
@@ -58,6 +82,11 @@
 
         function selectBrand()
         {
+            var BrandPrice = "Brands";
+            var DiceCo = 1;
+            var AlexInd = 2;
+            var MikayCo = 4.5;
+            document.getElementById("Brands").classList.toggle("show");
 
 
 
@@ -67,11 +96,17 @@
 
         function PriceCalculator()
         {
-
-
+            document.getElementById("Brands").classList.toggle("show");
+            document.getElementById("Types").classList.toggle("show");
+            document.getElementById("Materials").classList.toggle("show");
+            
+            var display = "MaterialPrice" + "TypePrice" * "BrandPrice";
+            out.innerHTML=display;
 
 
         }
+
+
 
     </script>
 
