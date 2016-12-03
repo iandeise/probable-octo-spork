@@ -13,11 +13,8 @@ li{
 
 fieldset{
     background-color: grey;
-    color: red;
-    Border: 1px solid rgb(233,69,0);
-    float: left;
-    margin: 10px 0px 10px 2.5%;
-    width: 46%
+    color: purple;
+    width: 15%
 }
 head, footer {
     background-color: grey;
@@ -43,4 +40,13 @@ p1 {
 navigate {
 text-align: center;
 background-color: grey;
+}
+
+.savebutton
+{
+    text-align: center;
+    background-color: grey;
+    color: purple;
+
+
 }

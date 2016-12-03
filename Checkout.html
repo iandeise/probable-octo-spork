@@ -5,6 +5,14 @@
     <title>Deise's Dice</title>
     <meta charset="utf-8">
 </head>
+
+<fieldset>
+    <input type="button" name="submit" value="Save" onclick="SetP();" />
+    <p id="fd"></p>
+
+
+</fieldset>
+
 <body>
 
     <h1>
@@ -22,93 +30,99 @@
 
     <hr />
 
-    <select name="Materials">
+    <font color="purple">Pick what material you would like:</font>
+    <form action="">
+        <input type="radio" name="material" id="Plastic" value="Plastic" >Plastic Set<br>
+        <input type="radio" name="material" id="Wood" value="Wood" >Wood Set<br>
+        <input type="radio" name="material" id="Metal" value="Metal" >Metal Set<br>
+    </form>
 
-        <option value="Plastic">Plastic</option>
-        <option value="Wood">Wood</option>
-        <option value="Metal">Metal</option>
+    <hr>
 
-        </select>
+    <font color="purple">Pick what type you would like:</font>
+    <form action="">
+        <input type="radio" name="type" id="IVSided" value="IVSided" >4 Sided<br>
+        <input type="radio" name="type" id="VISided" value="VISided" >6 Sided<br>
+        <input type="radio" name="type" id="XXSided" value="XXSided" >20 Sided<br>
+       
+    </form>
 
-     <select name="Types">
+    <hr>
 
-            <option value="IVSided">4 Sided</option>
-            <option value="VISided">6 Sided</option>
-            <option value="XXSided">20 Sided</option>
+    <font color="purple">Pick what brand you would like:</font>
+    <form action="">
+        <input type="radio" name="brand" id= "DiceCo" value="DiceCo" >DiceCo<br />
+        <input type="radio" name="brand" id="AlexInd" value="AlexInd" >Alex Industries<br>
+        <input type="radio" name="brand" id="MikayCo" value="MikayCo" >MikayCo<br>
+        
+    </form>
 
-        </select>
-
-    <select name="Brands">
-
-        <option value="DiceCo">DiceCo</option>
-        <option value="AlexInd">Alex Industries</option>
-        <option value="MikayCo">MikayCo</option>
-
-    </select>
+    <hr>
 
     <display>
 
         You will pay: 
+
 
     </display>
 
 
     <script>
 
-        function selectMaterial()
-        {
-            var MaterialPrice = "Materials";
-            var Plastic = 1;
-            var Wood = 3.50;
-            var Metal = 5;
-            document.getElementById("Materials").classList.toggle("show");
+        function SetP() {
+            var mSelect = document.getElementsByName("material").value;
+            var tSelect = document.getElementsByName("type").value;
+            var bSelect = document.getElementsByName("brand").value;
+            var elm = document.getElementById("fd");
+            var total = 0
+            var szTemp = "";
+
+
+            if (mSelect == Plastic){
+                total = total + 1;
+            } else if (mSelect == Wood){
+                total = total + 5;
             
+            } else if (mSelect == Metal){
+                total = total + 10;
+            }
+
+            if (tSelect == IVSided) {
+                total = total + 2;
+            } else if (tSelect == VISided) {
+                total = total + 5;
+
+            } else if (tSelect == XXSided){
+                total = total + 10;
+            }
 
 
-        }
+            if (bSelect == DiceCo) {
+                total = total * 1;
+            } else if (bSelect == AlexInd){
+                total = total * 2;
 
-        function selectType()
-        {
-            var TypePrice = "Types";
-            var IVSided = 2;
-            var VISided = 5;
-            var XXSided = 10;
-            document.getElementById("Types").classList.toggle("show");
-
-
-
-
-        }
-
-        function selectBrand()
-        {
-            var BrandPrice = "Brands";
-            var DiceCo = 1;
-            var AlexInd = 2;
-            var MikayCo = 4.5;
-            document.getElementById("Brands").classList.toggle("show");
-
+            } else if (bSelect == MikayCo) {
+                    total = total * 4.5;
+            }
 
 
 
+            szTemp += elm.innerHTML
+            szTemp += "You will pay: $ " + total + "<br />"
 
-        }
+            elm.innerHTML = szTemp;
 
-        function PriceCalculator()
-        {
-            document.getElementById("Brands").classList.toggle("show");
-            document.getElementById("Types").classList.toggle("show");
-            document.getElementById("Materials").classList.toggle("show");
-            
-            var display = "MaterialPrice" + "TypePrice" * "BrandPrice";
-            out.innerHTML=display;
+                return;
 
 
-        }
+            }
 
 
 
     </script>
+
+        
 
 
 </body>
