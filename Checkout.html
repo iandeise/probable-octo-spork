@@ -87,8 +87,23 @@
                         total = total + 5;
                     } else if (document.getElementById("m3").checked == true) {
                         total = total + 10;
+                    }
+
+            if (document.getElementById("t1").checked == true) {
+                total = total + 2;
+            } else if (document.getElementById("t2").checked == true) {
+                total = total + 5;
+            } else if (document.getElementById("t3").checked == true) {
+                total = total + 10;
             }
-            
+
+            if (document.getElementById("b1").checked == true) {
+                total = total * 1;
+            } else if (document.getElementById("b2").checked == true) {
+                total = total * 2;
+            } else if (document.getElementById("b3").checked == true) {
+                total = total * 5;
+            }
 
            
             /*if ((plastic).checked = true) {
@@ -122,7 +137,7 @@
 
             
             szTemp += elm.innerHTML
-            szTemp += "You will pay: $ " + total + "<br />"
+            szTemp += "This item costs: $ " + total + "<br />"
 
             elm.innerHTML = szTemp;
 

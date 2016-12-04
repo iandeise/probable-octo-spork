@@ -39,11 +39,47 @@
             <hr />
 
             <p1>
-
+            
                 Using our Dice Customizer, you will be able to choose<br>
                 the material and type of die that you would like to buy!
 
             </p1>
+
+    <hr />
+
+    <fieldset>
+        <h6 style=font face="Impact";
+            text-align="center" ;font-size:20pt;
+            color:#00FF00;>
+            Developer Login
+        </h6>
+        <form name="login">
+            Username<input type="text" name="adminid" /><br />
+            Password<input type="password" name="password" />
+            <input type="button" onclick="check(this.form)" value="Login" />
+            <input type="reset" value="Cancel" />
+        </form>
+    </fieldset>
+    <script language="javascript">
+function check(form)
+{
+ 
+ if(form.adminid.value == "admin" && form.password.value == "admin")
+  {
+     window.open('/Admin/adHome.html')
+  }
+ else
+ {
+   alert("Error: Incorrect Password or Username")
+  }
+}
+    </script>
+
+
+
+
+
+
 
         </body>
     </html>
