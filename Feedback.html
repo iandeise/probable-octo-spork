@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="StyleSheet.css" rel="stylesheet" />
+    <title>Deise's Dice</title>
+    <meta charset="utf-8" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="myScript.js"></script>
+    
+</head>
+<body>
+
+    <h1>
+        <font face="Impact"> Deise's Dice </font>
+    </h1>
+
+    <hr />
+
+    <navigate>
+        <a href="Home.html">Return To Our Homepage</a>
+        <a href="ViewByMaterial.html">View Inventory by Material</a>
+        <a href="ViewByBrand.html">View Inventory by Brand</a>
+        <a href="Checkout.html">Continue to Checkout</a>
+        <a href="Feedback.html">Leave us Some Feedback</a>
+    </navigate>
+
+    <hr />
+
+
+    <h2>
+        We Appreciate Your Comments and Feedback!
+    </h2>
+
+
+    <button class="navbutton" onClick="clearComment()">Clear Comment</button>
+    <button class="navbutton" onClick="saveComment()">Save Comment </button>
+
+    <div id="dtext">
+        <h4>Your comment</h4>
+        <input id="username" type="text" maxlength="32" size="20" placeholder="Name" />
+        <br />
+        <textarea id="feedback" class="textbox" rows="6" placeholder="Your comment"></textarea>
+    </div>
+
+    <h1>Comments</h1>
+    <div id="commentlist"></div>
+
+
+    
+<Script>
+
+    
+
+    function setObject(key, value) {
+    window.localStorage.setItem(key, JSON.stringify(value));
+    }
+    function getObject(key) {
+    var storage = window.localStorage,
+    value = storage.getItem(key);
+    return value && JSON.parse(value);
+    }
+    function clearStorage() {
+    window.localStorage.clear();
+    }
+
+    // Clear inputfields and localstorage
+    function clearComment(){
+    $('#feedback').val('');
+    $('#username').val('');
+    clearStorage();
+    }
+
+    function saveComment(){
+    var cText = $('#feedback').val(),
+    cName = $('#username').val(),
+    commentList = getObject('commentlist');
+
+    if (commentList){
+    commentList.push({name: cName, text: cText});
+    setObject('commentlist', commentList);
+    }else{ //Add a comment
+    setObject('commentlist', [{name: cName, text: cText}]);
+    }
+
+    bindComment();
+    }
+
+    function bindComment(){
+    var commentListElement = $('#commentlist'),
+    commentList = getObject('commentlist');
+
+    //Out with the old
+    commentListElement.empty();
+    //And in with the new
+    $.each(commentList, function(i, k){
+    commentListElement.append( $('<p><span>'+ k.name +'</span>'+ k.text +'</p>') );
+    });
+    }
+
+    
+    $(function(){
+    bindComment();
+    });
+
+
+
+
+</Script>
+
+
+
+
+
+</body>
+</html>
