@@ -2,6 +2,7 @@
 <html>
 <head>
     <link href="StyleSheet.css" rel="stylesheet" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <title>Deise's Dice</title>
     <meta charset="utf-8">
 </head>
@@ -41,21 +42,49 @@
     <p>
 
         DiceCo is our basic and house-made version of dice. The cheapest choice with basic attributes.
+        <hr />
 
+        Rate this Brand:
+        <form action="">
+            <input type="radio" name="rating" id="rm1" value="1">1
+            <input type="radio" name="rating" id="rm2" value="2">2
+            <input type="radio" name="rating" id="rm3" value="3">3
+            <input type="radio" name="rating" id="rm4" value="4">4
+            <input type="radio" name="rating" id="rm5" value="5">5<br>
+
+            <input type="button" name="submit" value="Save" onclick="DiceRate();" />
+            <p id="dr"></p>
+    <hr />
+    </form>
     </p>
+
+
 
     <p1>
         Alex Industries:
 
         <img src="http://rcdn-4.fishpond.co.nz/0024/633/530/9845991/6.jpeg" style="width:300px;height:250px;">
-        
+
+
 
     </p1>
 
     <p1>
 
         Alex Indrustries provides a more intricate variant. Their designs include rounded edges for a smoother look.
+        <hr />
 
+        Rate this Brand:
+        <input type="radio" name="rating" id="rt1" value="1">1
+        <input type="radio" name="rating" id="rt2" value="2">2
+        <input type="radio" name="rating" id="rt3" value="3">3
+        <input type="radio" name="rating" id="rt4" value="4">4
+        <input type="radio" name="rating" id="rt5" value="5">5<br>
+
+        <input type="button" name="submit" value="Save" onclick="AlexRate();" />
+        <p id="ar"></p>
+        <div id="result"></div>
+        <hr />
     </p1>
     <p>
         MikayCo:
@@ -66,17 +95,75 @@
 
     <p>
 
-       MikayCo uses carving and outcroppings to provide an artistic and custom look for your gamepieces.
+        MikayCo uses carving and outcroppings to provide an artistic and custom look for your gamepieces.
 
+        <hr />
+        Rate this Brand:
+        <input type="radio" name="rating" id="rb1" value="1">1
+        <input type="radio" name="rating" id="rb2" value="2">2
+        <input type="radio" name="rating" id="rb3" value="3">3
+        <input type="radio" name="rating" id="rb4" value="4">4
+        <input type="radio" name="rating" id="rb5" value="5">5<br>
+
+        <input type="button" name="submit" value="Save" onclick="MikayRate();" />
+        <p id="mr"></p>
+        <hr />
     </p>
     <hr />
-    <!-- begin htmlcommentbox.com -->
-    <br /><br> <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">HTML Comment Box</a> is loading comments...</div>
-    <link rel="stylesheet" type="text/css" href="http://www.htmlcommentbox.com/static/skins/default/skin.css" />
-    <script type="text/javascript" language="javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={  };} (function(){s=document.createElement("script");s.setAttribute("type","text/javascript");s.setAttribute("src", "http://www.htmlcommentbox.com/jread?page="+escape((window.hcb_user && hcb_user.PAGE)||(""+window.location)).replace("+","%2B")+"&opts=470&num=10");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
-    <!-- end htmlcommentbox.com -->
+
+    <script>
+
+        function DiceRate()
+        {
+            var elm = document.getElementById("dr");
+            var szTemp = "";
 
 
+
+        }
+
+        function AlexRate()
+        {
+            var elm = document.getElementById("ar");
+            var szTemp = "";
+            var staravg;
+
+            if (typeof (Storage) !== "undefined") {
+                if (localStorage.staravg) {
+                    localStorage.staravg = Average(localStorage.staravg) + (localStorage.staravg);
+                } else {
+                    localStorage.staravg = 5;
+                }
+                document.getElementById("result").innerHTML = "The Average Rating is: " + localStorage.staravg + " star(s).";
+            } else {
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+            }
+
+
+
+            szTemp += elm.innerHTML
+            szTemp += "This brand received a: " + result + " star rating. <br />"
+
+            elm.innerHTML = szTemp;
+
+            return;
+
+
+        }
+
+        function MikayRate()
+        {
+            var elm = document.getElementById("mr");
+            var szTemp = "";
+
+
+        }
+
+
+
+
+
+    </script>
 
 
 
