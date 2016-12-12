@@ -45,17 +45,18 @@
         <hr />
 
         Rate this Brand:
-        <form action="">
-            <input type="radio" name="rating" id="rm1" value="1">1
-            <input type="radio" name="rating" id="rm2" value="2">2
-            <input type="radio" name="rating" id="rm3" value="3">3
-            <input type="radio" name="rating" id="rm4" value="4">4
-            <input type="radio" name="rating" id="rm5" value="5">5<br>
+        
+            <input type="radio" name="rating" id="dr1" value="1">1
+            <input type="radio" name="rating" id="dr2" value="2">2
+            <input type="radio" name="rating" id="dr3" value="3">3
+            <input type="radio" name="rating" id="dr4" value="4">4
+            <input type="radio" name="rating" id="dr5" value="5">5<br>
 
+            
             <input type="button" name="submit" value="Save" onclick="DiceRate();" />
             <p id="dr"></p>
+            <div id="result"></div>
     <hr />
-    </form>
     </p>
 
 
@@ -75,17 +76,20 @@
         <hr />
 
         Rate this Brand:
-        <input type="radio" name="rating" id="rt1" value="1">1
-        <input type="radio" name="rating" id="rt2" value="2">2
-        <input type="radio" name="rating" id="rt3" value="3">3
-        <input type="radio" name="rating" id="rt4" value="4">4
-        <input type="radio" name="rating" id="rt5" value="5">5<br>
+                
+                <input type="radio" name="rating" id="ar1" value="1">1
+                <input type="radio" name="rating" id="ar2" value="2">2
+                <input type="radio" name="rating" id="ar3" value="3">3
+                <input type="radio" name="rating" id="ar4" value="4">4
+                <input type="radio" name="rating" id="ar5" value="5">5<br>
 
-        <input type="button" name="submit" value="Save" onclick="AlexRate();" />
-        <p id="ar"></p>
-        <div id="result"></div>
-        <hr />
-    </p1>
+
+                <input type="button" name="submit" value="Save" onclick="AlexRate();" />
+                <p id="ar"></p>
+                <div id="result"></div>
+
+                <hr />
+</p1>
     <p>
         MikayCo:
 
@@ -99,14 +103,15 @@
 
         <hr />
         Rate this Brand:
-        <input type="radio" name="rating" id="rb1" value="1">1
-        <input type="radio" name="rating" id="rb2" value="2">2
-        <input type="radio" name="rating" id="rb3" value="3">3
-        <input type="radio" name="rating" id="rb4" value="4">4
-        <input type="radio" name="rating" id="rb5" value="5">5<br>
+        <input type="radio" name="rating" id="mr1" value="1">1
+        <input type="radio" name="rating" id="mr2" value="2">2
+        <input type="radio" name="rating" id="mr3" value="3">3
+        <input type="radio" name="rating" id="mr4" value="4">4
+        <input type="radio" name="rating" id="mr5" value="5">5<br>
 
         <input type="button" name="submit" value="Save" onclick="MikayRate();" />
         <p id="mr"></p>
+        <div id="result"></div>
         <hr />
     </p>
     <hr />
@@ -126,23 +131,60 @@
         {
             var elm = document.getElementById("ar");
             var szTemp = "";
-            var staravg;
 
+            var astar = localStorage.astars || 0;
+
+
+            
             if (typeof (Storage) !== "undefined") {
-                if (localStorage.staravg) {
-                    localStorage.staravg = Average(localStorage.staravg) + (localStorage.staravg);
+                if (localStorage.ratecount) {
+                    localStorage.ratecount = Number(localStorage.ratecount) + 1;
                 } else {
-                    localStorage.staravg = 5;
+                    localStorage.ratecount = 1;
                 }
-                document.getElementById("result").innerHTML = "The Average Rating is: " + localStorage.staravg + " star(s).";
-            } else {
-                document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
             }
 
 
 
+
+            
+                if (document.getElementById("ar1").checked == true) {
+                    astar = astar + 1;
+                    localStorage.setItem('astar', astar);
+                    //localStorage.astars = localStorage.astars + 1
+                     
+                    } else if (document.getElementById("ar2").checked == true){
+                        astar = astar + 2;
+                        localStorage.setItem('astar', astar);
+                        //localStorage.astar.stars = Number(localStorage.astar.stars) + 2;
+                        
+                        } else if (document.getElementById("ar3").checked == true) {
+                            localStorage.astar.stars = Number(localStorage.astar.stars) + 3;
+                            
+                            } else if (document.getElementById("ar4").checked == true) {
+                                localStorage.astar.stars = Number(localStorage.astar.stars) + 4;
+                                
+                                } else if (document.getElementById("ar5").checked == true) {
+                                    localStorage.astar.stars = Number(localStorage.astar.stars) + 5;
+                                    
+
+                                    console.log(localStorage.astar.stars);
+                    
+                                }
+                                else {
+                                    localStorage.astar.stars = 1;
+                                }
+
+
+
+
+                document.getElementById("result").innerHTML = "The Average Rating is: " + astar + " star(s).";
+            
+
+
+
             szTemp += elm.innerHTML
-            szTemp += "This brand received a: " + result + " star rating. <br />"
+            szTemp += document.getElementById("result").innerHTML
 
             elm.innerHTML = szTemp;
 
@@ -155,6 +197,60 @@
         {
             var elm = document.getElementById("mr");
             var szTemp = "";
+
+
+
+            if (typeof (Storage) !== "undefined") {
+                if (localStorage.ratecount) {
+                    localStorage.ratecount = Number(localStorage.ratecount) + 1;
+                } else {
+                    localStorage.ratecount = 1;
+                }
+            }
+
+
+
+
+            if (typeof (Storage) !== "undefined") {
+                if (document.getElementById("mr1").checked == true) {
+                    localStorage.mstaravg = Number(localStorage.mstaravg) + 1;
+                    localStorage.mstaravg = Number(localStorage.mstaravg) / Number(localStorage.ratecount);
+                } else if (document.getElementById("mr2").checked == true) {
+                    localStorage.mstaravg = Number(localStorage.mstaravg) + 2;
+                    localStorage.mstaravg = Number(localStorage.mstaravg) / Number(localStorage.ratecount);
+                } else if (document.getElementById("mr3").checked == true) {
+                    localStorage.mstaravg = Number(localStorage.mstaravg) + 3;
+                    localStorage.mstaravg = Number(localStorage.mstaravg) / Number(localStorage.ratecount);
+                } else if (document.getElementById("mr4").checked == true) {
+                    localStorage.mstaravg = Number(localStorage.mstaravg) + 4;
+                    localStorage.mstaravg = Number(localStorage.mstaravg) / Number(localStorage.ratecount);
+                } else if (document.getElementById("mr5").checked == true) {
+                    localStorage.mstaravg = Number(localStorage.mstaravg) + 5;
+                    localStorage.mstaravg = Number(localStorage.mstaravg) / Number(localStorage.ratecount);
+
+                    console.log(localStorage.mstaravg);
+
+                }
+                else {
+                    localStorage.mstaravg = 1;
+                }
+
+
+                document.getElementById("result").innerHTML = "The Average Rating is: " + localStorage.mstaravg + " star(s).";
+            } else {
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+            }
+
+
+
+            szTemp += elm.innerHTML
+            szTemp += document.getElementById("result").innerHTML
+
+            elm.innerHTML = szTemp;
+
+            return;
+
+
 
 
         }
